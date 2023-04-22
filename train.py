@@ -8,10 +8,21 @@ from torchvision.datasets import ImageFolder
 from config import *
 from utils import *
 import pickle
+import sys
+import getopt
+
+opts, args = getopt.getopt(sys.argv[1:], 'k:', ['kind='])
+for opt_name, opt_value in opts:
+    if opt_name in ('-k', 'kind'):
+        model_choice = int(opt_value)
+        # print(model_lst[model_choice])
+
+create_log(model_choice)
 
 # 创建模型
 model = model
 model_name = model_lst[model_choice]
+print(model_name)
 model = model.to(device)
 
 # train_set = ImageFolder(root="./dataset/train", transform=data_transform)
